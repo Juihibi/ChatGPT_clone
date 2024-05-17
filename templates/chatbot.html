@@ -78,13 +78,13 @@
               <b>AI Chatbot</b>
             </div>
             <div class="message-content">
-              Hi, I am your AI Chatbot, you can ask me anything.
+              Hi {{user.username}}, I am your AI Chatbot, you can ask me anything.
             </div>
           </div>
         </li>
       </ul>
       
-    </div>
+    </div> 
     <br><br>
     <br><br>
     <br><br>
@@ -102,6 +102,8 @@
 
 
 <script>
+  
+ 
   const messagesList = document.querySelector('.messages-list');
   const messageForm = document.querySelector('.message-form');
   const messageInput = document.querySelector('.message-input');
@@ -128,12 +130,12 @@
       </div>
 
     `;
-    messagesList.appendChild(messageItem); 
-    messageInput.value = '';  //After we submit the message, it should n=be blank in the form bar
+    messagesList.appendChild(messageItem); // show the message input 
+    messageInput.value = '';  //After we submit the message, it should be blank in the input placeholder
 
     fetch('', {
       method: 'POST',
-      headers: { 'Content-type': 'application/x-www-form-urlencoded'}, // how it should always be
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded'}, // how it should always be
       body: new URLSearchParams({
         'csrfmiddlewaretoken': document.querySelector('[name=csrfmiddlewaretoken]').value,
         'message': message
@@ -162,5 +164,8 @@
 
 
 </script>
+
+
+
 
 {% endblock %}
